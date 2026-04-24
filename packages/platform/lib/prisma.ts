@@ -1,4 +1,5 @@
 import { PrismaMariaDb } from '@prisma/adapter-mariadb'
+import { PrismaPg } from '@prisma/adapter-pg'
 import { PrismaClient } from '@/prisma/generated/client'
 import { isNextBuild } from './is-next-build'
 
@@ -30,13 +31,22 @@ const createPrismaClient = () => {
 		throw new Error('DATABASE_URL 环境变量格式错误, 请检查')
 	}
 
-	const adapter = new PrismaMariaDb({
-		host: dbUrl.hostname,
-		port: Number(dbUrl.port),
-		user: dbUrl.username,
-		password: dbUrl.password,
-		database: dbUrl.pathname.slice(1),
-	})
+	const port = Number(dbUrl.port) || undefined
+	const database = dbUrl.pathname.slice(1)
+	const protocol = dbUrl.protocol.replace(':', '')
+
+	const adapter =
+		protocol === 'postgres' || protocol === 'postgresql'
+			? new PrismaPg({
+				connectionString: databaseUrl,
+			})
+			: new PrismaMariaDb({
+				host: dbUrl.hostname,
+				port,
+				user: dbUrl.username,
+				password: dbUrl.password,
+				database,
+			})
 
 	return new PrismaClient({
 		adapter,

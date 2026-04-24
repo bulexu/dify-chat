@@ -19,9 +19,11 @@ COPY packages/helpers/package.json ./packages/helpers/
 COPY packages/theme/package.json ./packages/theme/
 COPY packages/react-app/package.json ./packages/react-app/
 COPY packages/platform/package.json ./packages/platform/
+COPY packages/platform/prisma.config.ts ./packages/platform/
+COPY packages/platform/prisma ./packages/platform/prisma
 
 # 安装所有依赖
-RUN pnpm install
+RUN pnpm install --registry https://registry.npmmirror.com
 
 # 复制子包源码
 COPY packages/api ./packages/api
