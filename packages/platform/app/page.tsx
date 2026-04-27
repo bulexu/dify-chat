@@ -30,7 +30,7 @@ export default function Home() {
 		return (
 			<div className="flex min-h-screen items-center justify-center">
 				<div className="text-center">
-					<h1 className="mb-4 text-2xl font-bold">欢迎使用 Dify Chat Platform</h1>
+					<h1 className="mb-4 text-2xl font-bold">欢迎使用 AI Chat Platform</h1>
 					<p className="mb-6 text-gray-600">请先登录以访问应用管理功能</p>
 					<button
 						onClick={() => router.push('/login')}

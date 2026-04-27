@@ -7,7 +7,7 @@ export const LogoIcon = () => {
 	return (
 		<img
 			className="inline-block h-5 w-5"
-			src={LogoImage}
+			src={LogoImage.src}
 			draggable={false}
 			alt="logo"
 		/>
@@ -57,14 +57,14 @@ export const Logo = (props: ILogoProps) => {
 				) : (
 					<img
 						className="inline-block h-8 w-8"
-						src={LogoImage}
+						src={LogoImage.src}
 						draggable={false}
 						alt="logo"
 					/>
 				)}
 				{!hideText ? (
 					<span className="my-0 ml-3 inline-block text-lg font-bold text-theme-text">
-						{text || 'Dify Chat'}
+						{text || 'AI Chat'}
 					</span>
 				) : null}
 			</div>

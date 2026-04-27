@@ -65,7 +65,7 @@ export const Logo = (props: ILogoProps) => {
 				)}
 				{!hideText ? (
 					<span className="my-0 ml-3 inline-block text-lg font-bold text-theme-text">
-						{text || 'Dify Chat'}
+						{text || 'AI Chat'}
 					</span>
 				) : null}
 			</div>

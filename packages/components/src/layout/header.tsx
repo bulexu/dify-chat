@@ -88,7 +88,7 @@ export default function HeaderLayout(props: IHeaderLayoutProps) {
 								/>
 							</div>
 						</ThemeSelector>
-						<GithubIcon />
+						{/* <GithubIcon /> */}
 					</Space>
 				)}
 			</HeaderSiderIcon>

@@ -1,8 +1,24 @@
 import type { NextConfig } from 'next'
 import path from 'path'
 
+const workspaceRoot = path.resolve(__dirname, '../../')
+const workspaceAliases = {
+	'@dify-chat/api': '../api/src/index.ts',
+	'@dify-chat/components': '../components/src/index.tsx',
+	'@dify-chat/core': '../core/src/index.ts',
+	'@dify-chat/helpers': '../helpers/src/index.ts',
+	'@dify-chat/theme': '../theme/src/index.ts',
+}
+
 const nextConfig: NextConfig = {
 	output: 'standalone',
+	transpilePackages: [
+		'@dify-chat/api',
+		'@dify-chat/components',
+		'@dify-chat/core',
+		'@dify-chat/helpers',
+		'@dify-chat/theme',
+	],
 	async headers() {
 		return [
 			{
@@ -22,7 +38,8 @@ const nextConfig: NextConfig = {
 		]
 	},
 	turbopack: {
-		root: path.resolve(__dirname, '../../'),
+		root: workspaceRoot,
+		resolveAlias: workspaceAliases,
 	},
 }
 

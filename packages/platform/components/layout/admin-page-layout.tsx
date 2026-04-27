@@ -19,13 +19,13 @@ export default function AdminPageLayout(props: IAdminPageLayoutProps) {
 	return (
 		<PageLayout
 			headerProps={{
-				logoText: 'Dify Chat Platform',
+				logoText: 'AI Chat Platform',
 				renderLogo: () => (
 					<Image
 						src={LogoIcon}
 						width={32}
 						height={32}
-						alt="Dify Chat Platform"
+						alt="AI Chat Platform"
 					/>
 				),
 				isTitleWrapped: true,

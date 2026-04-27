@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-	title: 'Dify Chat Platform',
-	description: '更贴近业务的 Dify Web APP',
+	title: 'AI Chat Platform',
+	description: '更贴近业务的 AI Web APP',
 }
 
 export default function RootLayout({
