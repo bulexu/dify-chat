@@ -102,64 +102,65 @@ const ChatLayoutInner = (props: { appList: IDifyAppItem[] }) => {
 				initLoading={initLoading}
 				renderCenterTitle={() => {
 					return (
-						<div className="flex items-center overflow-hidden">
-							<LucideIcon
-								name="layout-grid"
-								size={16}
-								className="mr-1"
-							/>
-							<span
-								className="inline-block shrink-0 cursor-pointer"
-								onClick={() => {
-									history.push('/apps')
-								}}
-							>
-								应用列表
-							</span>
-							{currentAppId ? (
-								<div className="flex items-center overflow-hidden">
-									<div className="mx-2 font-normal text-desc">/</div>
-									<Dropdown
-										arrow
-										placement="bottom"
-										trigger={['click']}
-										menu={{
-											selectedKeys: [currentAppId],
-											items: [
-												...(appList?.map(item => {
-													const isSelected = currentAppId === item.id
-													return {
-														key: item.id,
-														label: (
-															<div className={isSelected ? 'text-primary' : 'text-theme-text'}>
-																{item.info.name}
-															</div>
-														),
-														onClick: () => {
-															history.push(`/app/${item.id}`)
-															setCurrentAppId(item.id)
-														},
-														icon: (
-															<LucideIcon
-																name="bot"
-																size={18}
-															/>
-														),
-													}
-												}) || []),
-											],
-										}}
-									>
-										<div className="flex flex-1 cursor-pointer items-center overflow-hidden">
+						<div className="flex flex-1 cursor-pointer items-center overflow-hidden">
 											<span className="inline-block w-full cursor-pointer truncate">
 												{currentApp?.config?.info?.name}
 											</span>
-											<DownCircleTwoTone className="ml-1" />
+											{/* <DownCircleTwoTone className="ml-1" /> */}
 										</div>
-									</Dropdown>
-								</div>
-							) : null}
-						</div>
+						// <div className="flex items-center overflow-hidden">
+						// 	<LucideIcon
+						// 		name="layout-grid"
+						// 		size={16}
+						// 		className="mr-1"
+						// 	/>
+						// 	<span
+						// 		className="inline-block shrink-0 cursor-pointer"
+						// 		onClick={() => {
+						// 			history.push('/apps')
+						// 		}}
+						// 	>
+						// 		应用列表
+						// 	</span>
+						// 	{currentAppId ? (
+						// 		<div className="flex items-center overflow-hidden">
+						// 			<div className="mx-2 font-normal text-desc">/</div>
+						// 			<Dropdown
+						// 				arrow
+						// 				placement="bottom"
+						// 				trigger={['click']}
+						// 				menu={{
+						// 					selectedKeys: [currentAppId],
+						// 					items: [
+						// 						...(appList?.map(item => {
+						// 							const isSelected = currentAppId === item.id
+						// 							return {
+						// 								key: item.id,
+						// 								label: (
+						// 									<div className={isSelected ? 'text-primary' : 'text-theme-text'}>
+						// 										{item.info.name}
+						// 									</div>
+						// 								),
+						// 								onClick: () => {
+						// 									history.push(`/app/${item.id}`)
+						// 									setCurrentAppId(item.id)
+						// 								},
+						// 								icon: (
+						// 									<LucideIcon
+						// 										name="bot"
+						// 										size={18}
+						// 									/>
+						// 								),
+						// 							}
+						// 						}) || []),
+						// 					],
+						// 				}}
+						// 			>
+										
+						// 			</Dropdown>
+						// 		</div>
+						// 	) : null}
+						// </div>
 					)
 				}}
 			/>
