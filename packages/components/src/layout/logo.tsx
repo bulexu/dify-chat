@@ -3,11 +3,14 @@ import { Button } from 'antd'
 
 import LogoImage from '../assets/images/logo.png'
 
+const logoAsset = LogoImage as string | { src: string }
+const logoSrc = typeof logoAsset === 'string' ? logoAsset : logoAsset.src
+
 export const LogoIcon = () => {
 	return (
 		<img
 			className="inline-block h-5 w-5"
-			src={LogoImage.src}
+			src={logoSrc}
 			draggable={false}
 			alt="logo"
 		/>
@@ -57,7 +60,7 @@ export const Logo = (props: ILogoProps) => {
 				) : (
 					<img
 						className="inline-block h-8 w-8"
-						src={LogoImage.src}
+						src={logoSrc}
 						draggable={false}
 						alt="logo"
 					/>
