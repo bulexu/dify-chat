@@ -1,8 +1,25 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
+const getStatusCheckUrl = (request: NextRequest) => {
+	const url = request.nextUrl.clone()
+	url.pathname = '/api/init/status'
+	url.search = ''
+	url.hash = ''
+
+	if (
+		process.env.NODE_ENV !== 'production' &&
+		url.protocol === 'https:' &&
+		(url.hostname === 'localhost' || url.hostname === '127.0.0.1')
+	) {
+		url.protocol = 'http:'
+	}
+
+	return url
+}
+
 export async function proxy(request: NextRequest) {
-	const { pathname, origin } = request.nextUrl
+	const { pathname } = request.nextUrl
 
 	// 跳过 API 和静态资源
 	if (pathname.startsWith('/api')) return NextResponse.next()
@@ -12,7 +29,7 @@ export async function proxy(request: NextRequest) {
 	if (pathname.startsWith('/init')) return NextResponse.next()
 
 	try {
-		const res = await fetch(`${origin}/api/init/status`, { cache: 'no-store' })
+		const res = await fetch(getStatusCheckUrl(request), { cache: 'no-store' })
 		const data = await res.json()
 		const isInitialized = !!data.initialized
 
